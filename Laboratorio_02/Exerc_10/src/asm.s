@@ -9,42 +9,35 @@
         THUMB
         
 
-sub_swap 
-           PUSH {R0,R1,LR}
-           POP {R1,R0,PC}
-           //POP {R1}
-           //POP {R0,PC}
-           
-
-
-sub_divide
-        MOV R2,#0
-divide_loop
-        SUBS R0,R1
-        BMI divide_fim
-        ADD R2,#1
-        B divide_loop
-divide_fim
-        ADD R0, R1
-        BX LR
-
+Mul16b
+        PUSH {R0,R1,R3,R4}
+        MOVS R2,#0
+        MOVS R3, #0
+Mul16b_loop
+        CMP R3, #16
+        BEQ Mul16b_fim
+        ANDS R4,R0, #1
+        LSR R0, R0, #1
+        ITT NE
+        LSLNE R4, R1, R3
+        ADDNE R2, R4 
+        ADDS R3,#1
+        B Mul16b_loop
+Mul16b_fim
+        POP {R0,R1,R3,R4}
+        BX LR 
+ 
 __iar_program_start
+        
+main               
 
-;;Main entry point
-main 
-       MOV R0, #55 ;;Dividendo
-       MOV R1, #2  ;;Divisor
-       BL sub_divide ;;Resultado em R0(resto) e R2(divisao)
-
-
-loop   
-        B loop
-       
-       
-
-      
-
-
+        MOV R0, #7
+        MOV R1, #29
+        BL Mul16b
+        
+        
+end_loop
+        B       end_loop
 
         ;; Forward declaration of sections.
         SECTION CSTACK:DATA:NOROOT(3)

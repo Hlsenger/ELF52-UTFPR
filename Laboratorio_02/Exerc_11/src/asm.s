@@ -9,40 +9,51 @@
         THUMB
         
 
-sub_swap 
-           PUSH {R0,R1,LR}
-           POP {R1,R0,PC}
-           //POP {R1}
-           //POP {R0,PC}
-           
-
-
-sub_divide
-        MOV R2,#0
-divide_loop
-        SUBS R0,R1
-        BMI divide_fim
-        ADD R2,#1
-        B divide_loop
-divide_fim
-        ADD R0, R1
+sub_fatorial
+        PUSH {R1,R2}
+        CMP R0, #12
+        BHI overflow_sub_fatorial ;;Retorna overflow para qualquer numero > 12
+        MOVS R1, #0
+        MOVS R2, R0
+        MOVS R0, #1
+        CMP R2, #1 ;;trata caso especial: 0! = 1! = 1
+        BLS end_sub_fatorial
+loop1_sub_fatorial
+        MULS R0,R2
+        SUBS R2, #1
+        BLS end_sub_fatorial
+        B loop1_sub_fatorial
+overflow_sub_fatorial
+        MOVS R0, #-1
+end_sub_fatorial
+        POP {R1,R2}
         BX LR
+
 
 __iar_program_start
 
-;;Main entry point
-main 
-       MOV R0, #55 ;;Dividendo
-       MOV R1, #2  ;;Divisor
-       BL sub_divide ;;Resultado em R0(resto) e R2(divisao)
+
+main    
+        MOVS R0,#10
+
+        BL sub_fatorial
 
 
-loop   
-        B loop
-       
-       
 
-      
+end_loop
+        B       end_loop
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
