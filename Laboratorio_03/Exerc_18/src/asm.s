@@ -1,5 +1,6 @@
         PUBLIC  __iar_program_start
         PUBLIC  __vector_table
+       
 
         SECTION .text:CODE:REORDER(2)
         
@@ -13,11 +14,15 @@ SYSCTL_PRGPIO_R		        EQU     0x400FEA08
 
 PORTEN_BIT                      EQU     1000100100000b ; Habilita porta F, N e J
 
+PORTN_LED_MASK                  EQU     0001100b
+PORTF_LED_MASK                  EQU     1000100b
 
 GPIO_PORTN_DATA_MASKED_R    	EQU     0x40064000
 GPIO_PORTN_DATA_R    	        EQU     0x400643FC
 GPIO_PORTN_DIR_R     	        EQU     0x40064400
 GPIO_PORTN_DEN_R     	        EQU     0x4006451C
+
+
 
 GPIO_PORTF_DATA_MASKED_R    	EQU     0x4005D000
 GPIO_PORTF_DATA_R    	        EQU     0x4005D3FC
@@ -31,7 +36,6 @@ GPIO_PORTJ_DEN_R     	        EQU     0x4006051C
 GPIO_PORTJ_PUR_R                EQU     0x40060510
 
 
-
 initgpio    
             MOV R2, #PORTEN_BIT
             LDR R0, =SYSCTL_RCGCGPIO_R
@@ -40,10 +44,10 @@ initgpio
             STR R1, [R0] ; escrita do novo estado
 
             LDR R0, =SYSCTL_PRGPIO_R
-sr0_wait	
+initgpio_wait	
           LDR R2, [R0] ; leitura do estado atual
           TEQ R1, R2 ; clock do port N habilitado?
-          BNE sr0_wait ; caso negativo, aguarda
+          BNE initgpio_wait ; caso negativo, aguarda
 
 
           ;;Configura porta N
@@ -98,44 +102,52 @@ sr0_wait
 
           BX LR
 
+
 update_leds ;;Atualiza os leds baseado no contador no R0
-        PUSH {R1-R3}
+        PUSH {R1-R4}
         
         LDR R1, = GPIO_PORTF_DATA_MASKED_R ;Offset porta F
         LDR R2, = GPIO_PORTN_DATA_MASKED_R ;Endereco porta N
 
-        ;Testa Led D4
+        ;Testa Led D4(bit 0)
         AND R3, R0,#0001b
-        STR R3, [R1,#0000100b]
+        MOVS R4, R3
         
-        ;Testa Led D3
+        ;Testa Led D3(bit 4)
         AND R3, R0,#0010b
         LSL R3, R3, #3
-        STR R3, [R1,#1000000b]
+        ORR R3,R4
         
-        ;Testa Led D1
+        STR R3, [R1,#PORTF_LED_MASK] ;Atualiza porta F
+        
+        ;Testa Led D2(bit 0)
         AND R3, R0,#0100b
         LSR R3, R3, #2
-        STR R3, [R2,#0000100b]
+        MOVS R4,R3
         
-        ;Testa Led D1
+        ;Testa Led D1(bit1)
         AND R3, R0,#1000b
         LSR R3, R3, #2
-        STR R3, [R2,#0001000b]
+        ORR R3,R4
         
-        POP {R1-R3}
+        STR R3, [R2,#PORTN_LED_MASK] ;Atualiza porta N
+        
+        
+        
+        POP {R1-R4}
         BX LR
 
 
 delay_debounce
      PUSH {R0}
-     MOVT R0, #0x0005 ; Pequeno delay pra prevenir o bouncing
-sr2_loop
-     CBZ R0, sr2_end
+     MOVT R0, #0x0005 ; Pequeno delay pra prevenir a trepidação
+
+delay_debounce_loop
+     CBZ R0, delay_debounce_end
      SUB R0, R0, #1
-     B sr2_loop 
+     B delay_debounce_loop 
      
-sr2_end
+delay_debounce_end
      POP {R0}
      BX LR
 
@@ -143,7 +155,7 @@ sr2_end
 __iar_program_start
         
 main    
-        BL initgpio ;;Inicializa portas GPIO F e N
+        BL initgpio ;;Inicializa portas GPIO F e N e J
  	
         MOV R0, #0 ;Zera contador
         
@@ -156,7 +168,7 @@ loop
         MOVS R3,R2
 
 notpressed_state
-        MOVS R2, R3 ;;Atualiza o ultimo estado conhecido dos botoes
+        MOVS R2, R3 ;Atualiza o ultimo estado conhecido dos botoes
         BL delay_debounce
 notpressed_state_loop
         LDR R3, [R7,#1100b]
@@ -165,13 +177,13 @@ notpressed_state_loop
         B notpressed_state_loop
 
 pressed_state
-        MOV R2, R3 ;;Atualiza o ultimo estado conhecido dos botoes
+        MOV R2, R3 ;Atualiza o ultimo estado conhecido dos botoes
         CMP R2,#0x2
         ITE HS
-          ADDHS R0,#1 ;;Soma 1 ao contador
-          SUBLO R0,#1 ;;Subtrai um do contador
+          ADDHS R0,#1 ;Soma 1 ao contador
+          SUBLO R0,#1 ;Subtrai um do contador
         
-        CMP R0,#16 ;;Reseta o contador se se valor foi superior a 15
+        CMP R0,#16 ;;Reseta o contador ao contar acima de 15
         IT HS
           MOVHS R0,#0
         

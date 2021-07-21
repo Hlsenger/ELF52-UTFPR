@@ -11,6 +11,10 @@
 SYSCTL_RCGCGPIO_R               EQU     0x400FE608
 SYSCTL_PRGPIO_R		        EQU     0x400FEA08
 PORTEN_BIT                      EQU     1111111111111b
+PORTN_LED_MASK                  EQU     0001100b
+PORTF_LED_MASK                  EQU     1000100b
+
+
 
 //PORTEN_BIT                      EQU     1000000100000b ; Habilita porta F e N
 
@@ -34,10 +38,10 @@ initgpio
             STR R1, [R0] ; escrita do novo estado
 
             LDR R0, =SYSCTL_PRGPIO_R
-sr0_wait	
+initgpio_wait	
           LDR R2, [R0] ; leitura do estado atual
           TEQ R1, R2 ; clock do port N habilitado?
-          BNE sr0_wait ; caso negativo, aguarda
+          BNE initgpio_wait ; caso negativo, aguarda
 
 
           ;;Configura porta N
@@ -68,41 +72,56 @@ sr0_wait
 
           BX LR
 
+update_leds ;Atualiza os leds baseado no valor do contador no registrador R0
+        PUSH {R1-R4}
+        
+        LDR R1, = GPIO_PORTF_DATA_MASKED_R ;Offset porta F
+        LDR R2, = GPIO_PORTN_DATA_MASKED_R ;Endereco porta N
 
+        ;Testa Led D4(bit 0)
+        AND R3, R0,#0001b
+        MOVS R4, R3
+        
+        ;Testa Led D3(bit 4)
+        AND R3, R0,#0010b
+        LSL R3, R3, #3
+        ORR R3,R4
+        
+        STR R3, [R1,#PORTF_LED_MASK] ;Atualiza porta F
+        
+        ;Testa Led D2(bit 0)
+        AND R3, R0,#0100b
+        LSR R3, R3, #2
+        MOVS R4,R3
+        
+        ;Testa Led D1(bit1)
+        AND R3, R0,#1000b
+        LSR R3, R3, #2
+        ORR R3,R4
+        
+        STR R3, [R2,#PORTN_LED_MASK] ;Atualiza porta N
+        
+        
+        
+        POP {R1-R4}
+        BX LR
+        
+     
 __iar_program_start
         
 main    
         BL initgpio ;;Inicializa portas GPIO F e N
- 	LDR R0, = GPIO_PORTF_DATA_MASKED_R ;Offset porta F
-        LDR R1, = GPIO_PORTN_DATA_MASKED_R ;Endereco porta N
-        MOV R2, #0 ;Zera contador
+
+        MOVS R0, #0 ;Zera contador
         
 loop	
         
-        ;Testa Led D4
-        AND R6, R2,#0001b
-        STR R6, [R0,#0000100b]
+        BL update_leds
         
-        ;Testa Led D3
-        AND R6, R2,#0010b
-        LSL R6, R6, #3
-        STR R6, [R0,#1000000b]
-        
-        ;Testa Led D1
-        AND R6, R2,#0100b
-        LSR R6, R6, #2
-        STR R6, [R1,#0000100b]
-        
-        ;Testa Led D1
-        AND R6, R2,#1000b
-        LSR R6, R6, #2
-        STR R6, [R1,#0001000b]
-        
-          
-        ADDS R2,#1 ;;Soma 1 ao contador
-        TEQ R2,#16 ;;Reset o contador ao contar até 16
+        ADDS R0,#1 ;;Soma 1 ao contador
+        TEQ R0,#16 ;;Reseta o contador ao contar alem de 15
         IT EQ
-        MOVEQ R2,#0
+          MOVEQ R0,#0
 
         MOVT R3, #0x005F ; constante de atraso 
 delay   CBZ R3, theend ; 1 clock

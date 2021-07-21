@@ -47,7 +47,7 @@ wait	LDR R2, [R0] ; leitura do estado atual
 
 loop	
         LDR R3, [R0] ;Le o estado incial da porta
-        EoR R3, R1 ; Modifica apenas o bit da saida do led
+        EOR R3, R1 ; Modifica apenas o bit da saida do led
         STR R3, [R0] ;Grava a porta modificada
         
         MOVT R3, #0x001F ; constante de atraso 

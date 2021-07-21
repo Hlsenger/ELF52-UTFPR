@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  15/Jul/2021  17:16:38
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  21/Jul/2021  19:09:46
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =
@@ -45,10 +45,10 @@ No sections matched the following patterns:
   .intvec   ro code          0x0    0x40  asm.o [1]
                           - 0x40    0x40
 
-"P1":                               0xb6
-  .text     ro code         0x40    0xb4  asm.o [1]
-  .text     ro code         0xf4     0x2  asm.o [1]
-                          - 0xf6    0xb6
+"P1":                               0xc6
+  .text     ro code         0x40    0xc4  asm.o [1]
+  .text     ro code        0x104     0x2  asm.o [1]
+                         - 0x106    0xc6
 
 "P2":                             0x8000
   CSTACK             0x2000'0000  0x8000  <Block>
@@ -59,7 +59,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-         0xf6     0xf'ffff  0xf'ff0a
+        0x106     0xf'ffff  0xf'fefa
   0x2000'8000  0x2003'ffff  0x3'8000
 
 
@@ -75,13 +75,13 @@ command line/config:
     Total:
 
 E:\Faculdade\Microcontroladores\Pratica\Praticas\Laboratorio_03\Exerc_17\Debug\Obj: [1]
-    asm.o               246
+    asm.o               262
     --------------------------------
-    Total:              246
+    Total:              262
 
     Linker created            32'768
 ------------------------------------
-    Grand Total:        246   32'768
+    Grand Total:        262   32'768
 
 
 *******************************************************************************
@@ -92,13 +92,13 @@ Entry                    Address  Size  Type      Object
 -----                    -------  ----  ----      ------
 CSTACK$$Base         0x2000'0000         --   Gb  - Linker created -
 CSTACK$$Limit        0x2000'8000         --   Gb  - Linker created -
-__iar_program_start         0x8b        Code  Gb  asm.o [1]
+__iar_program_start         0xc1        Code  Gb  asm.o [1]
 __vector_table               0x0        Data  Gb  asm.o [1]
 
 
 [1] = E:\Faculdade\Microcontroladores\Pratica\Praticas\Laboratorio_03\Exerc_17\Debug\Obj
 
-     246 bytes of readonly  code memory
+     262 bytes of readonly  code memory
   32'768 bytes of readwrite data memory
 
 Errors: none
