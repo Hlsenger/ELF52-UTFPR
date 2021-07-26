@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.10.2.313/W64 for ARM                  23/Jul/2021  20:35:15
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  23/Jul/2021  21:03:16
 # Copyright 2007-2021 IAR Systems AB.
 #
 #    Output file  =
@@ -46,10 +46,10 @@ No sections matched the following patterns:
   .intvec   ro code          0x0   0x3c0  startup_TM4C129E.o [1]
                          - 0x3c0   0x3c0
 
-"P1":                              0x20a
-  .text     ro code        0x3c0   0x208  gpio_int.o [1]
-  .text     ro code        0x5c8     0x2  startup_TM4C129E.o [1]
-                         - 0x5ca   0x20a
+"P1":                              0x20e
+  .text     ro code        0x3c0   0x20c  gpio_int.o [1]
+  .text     ro code        0x5cc     0x2  startup_TM4C129E.o [1]
+                         - 0x5ce   0x20e
 
 "P2":                             0x8000
   CSTACK             0x2000'0000  0x8000  <Block>
@@ -60,7 +60,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-        0x5ca     0xf'ffff  0xf'fa36
+        0x5ce     0xf'ffff  0xf'fa32
   0x2000'8000  0x2003'ffff  0x3'8000
 
 
@@ -76,14 +76,14 @@ command line/config:
     Total:
 
 E:\Faculdade\Microcontroladores\Pratica\Praticas\Laboratorio_04\gpio_int\Debug\Obj: [1]
-    gpio_int.o              520
+    gpio_int.o              524
     startup_TM4C129E.o      962
     ------------------------------------
-    Total:                1'482
+    Total:                1'486
 
     Linker created                32'768
 ----------------------------------------
-    Grand Total:          1'482   32'768
+    Grand Total:          1'486   32'768
 
 
 *******************************************************************************
@@ -98,14 +98,14 @@ GPIOJ_Handler               0x3c1        Code  Gb  gpio_int.o [1]
 __Vectors                     0x0         --   Gb  startup_TM4C129E.o [1]
 __Vectors_End               0x3c0        Data  Gb  startup_TM4C129E.o [1]
 __Vectors_Size {Abs}        0x3c0         --   Gb  startup_TM4C129E.o [1]
-__iar_program_start         0x3e7        Code  Gb  gpio_int.o [1]
+__iar_program_start         0x3e3        Code  Gb  gpio_int.o [1]
 __vector_table                0x0        Data  Gb  startup_TM4C129E.o [1]
 __vector_table_0x1c          0x1c        Data  Gb  startup_TM4C129E.o [1]
 
 
 [1] = E:\Faculdade\Microcontroladores\Pratica\Praticas\Laboratorio_04\gpio_int\Debug\Obj
 
-   1'482 bytes of readonly  code memory
+   1'486 bytes of readonly  code memory
   32'768 bytes of readwrite data memory
 
 Errors: none

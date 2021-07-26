@@ -49,16 +49,16 @@ GPIOJ_Handler:
         MOV R0, #00000011b ; ACK do bit 0 e 1
         LDR R1, =GPIO_PORTJ_BASE
         STR R0, [R1, #GPIO_ICR]
-        CMP R10, #1 ;Se a flag em R10 esta setada em 1, ignora a interrupcao
-        BEQ GPIOJ_Handler_end
+        
+        CMP R11, #0 
+        BHI GPIOJ_Handler_end
         
         LDR R2,[R1,R0, LSL #2]
         CMP R2,#0x2
         ITE HS
-          ADDHS R11,#1 ;Soma 1 ao contador
-          SUBLO R11,#1 ;Subtrai um do contador
-        
-        MOV R10, #1 ;Seta uma "flag" no registrador R10 impedindo que as interrupcoes modifiquem R11 antes de um delay
+          MOVHS R11,#1 ; Seta R11=1  caso SW1
+          MOVLO R11,#2 ;Seta R11=2  caso SW2
+
 GPIOJ_Handler_end:
         BX LR ; retorno da ISR
 
@@ -87,17 +87,26 @@ main:   MOV R0, #(PORTN_BIT | PORTF_BIT)
         
         BL Button_int_conf ; habilita interrupção do botão SW1 e SW2
 
-        MOV R10, #0 ;;Usado como flag compartilhado entre a interrupção e o programa
-        MOV R11, #0 ;;Usado como contrador compartilhado entre a interrupção e o programa
+        MOV R5, #0 ;;R1 é usado como contador
+        MOV R11, #0 ;;Usado para a comunicação entre a interrupção e o programa
         BL LED_write
-loop: 	    
-        CMP R10,#0
+loop: 	
+
+        CMP R11,#0
         BEQ loop_end
-        MOV R0, R11 ;; Se a flag foi setada pela interrupção, atualiza os leds, executa o delay de debouncing e limpa flag
+       
+        
+        CMP R11,#0x1
+        ITE EQ
+          ADDEQ R5,#1 ;Soma 1 ao contador
+          SUBNE R5,#1 ;Subtrai um do contador
+        
+        MOVS R0,R5
         BL LED_write
+        
         MOVT R0,#0x0D
         BL SW_delay
-        MOV R10, #0; Reseta a flag permitindo interrupcoes alterarem o valor do contador novamente
+        MOV R11, #0; Reseta a flag permitindo interrupcoes alterarem o valor do contador novamente
 
 loop_end:
         B loop
