@@ -93,7 +93,7 @@ wrx:    LDR R2, [R0, #UART_FR] ; status da UART
         BEQ wrx
         LDR R1, [R0] ; lê do registrador de dados da UART0 (recebe)
         CMP R1, #0x0D ; Checa se é um /r
-        BNE wrx
+        BNE wrx 
         
         LDR R1,=ROMSTRING1 ;Ponteiro para o primeiro caractere da string de retorno
         MOVS R2,#27 ;;Numero de caracteres na string

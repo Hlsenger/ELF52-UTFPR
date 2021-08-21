@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <settings>
     <DebugChecksum>
-        <Checksum>1189503114</Checksum>
+        <Checksum>1665286788</Checksum>
     </DebugChecksum>
     <Disassembly>
         <InstrCount>0</InstrCount>
@@ -66,10 +66,10 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <LmiFtdiDriver>
-        <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
-        <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
         <LMIFTDIserialNo>0F800C6A</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
+        <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
+        <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
     </LmiFtdiDriver>
@@ -81,13 +81,21 @@
         <EnableCache>0</EnableCache>
     </ArmDriver>
     <Registers>
-        <regBase0>R2 10</regBase0>
-        <regBase1>R4 10</regBase1>
+        <regBase0>R1 10</regBase0>
+        <regBase1>R7 10</regBase1>
+        <regBase2>R8 10</regBase2>
+        <regBase3>R0 10</regBase3>
+        <regBase4>R4 10</regBase4>
+        <regBase5>R5 10</regBase5>
     </Registers>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
     </Trace2>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -99,10 +107,6 @@
     <CallStackStripe>
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>

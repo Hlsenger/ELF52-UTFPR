@@ -1,0 +1,27 @@
+# ninja log v5
+1	26	6509524899006849	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+29	74	6509524899466397	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+4	30	6503619895761572	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/startup_TM4C129E.o	366210b44083ce5c
+1	14	6505864564562351	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/init.o	d74bf3186e8f51eb
+2	20	6509525671515961	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+23	62	6509525671915744	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+2	16	6509525840261770	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+19	50	6509525840561588	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	17	6509526383936741	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+22	57	6509526384306484	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	15	6509537980047608	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+19	60	6509537980457373	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	17	6509538524884157	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+20	53	6509538525223970	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	17	6509545895575922	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+5	26	6509545895675846	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/init.o	d74bf3186e8f51eb
+30	63	6509545896015817	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+6	264	6512742001174006	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/init.o	d74bf3186e8f51eb
+248	268	6512742001203996	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+272	528	6512742003716489	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	15	6512742893380429	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+18	49	6512742893679769	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	16	6512743710132466	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+19	51	6512743710462181	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f
+1	15	6512744640841694	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Obj/asm.o	594a09816d2112b4
+18	47	6512744641151521	E:/Faculdade/Microcontroladores/Pratica/Praticas/ProjetoFinal/Debug/Exe/ProjetoFinal.out	e310f30a79aa6f4f

@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\Ex21_UART\settings\Laboratorio_05.Debug.general.xcl" --backend -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\Ex21_UART\settings\Laboratorio_05.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\ProjetoFinal\settings\ProjetoFinal.Debug.general.xcl" --backend -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\ProjetoFinal\settings\ProjetoFinal.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\Ex21_UART\settings\Laboratorio_05.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\Ex21_UART\settings\Laboratorio_05.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\ProjetoFinal\settings\ProjetoFinal.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\Faculdade\Microcontroladores\Pratica\Praticas\ProjetoFinal\settings\ProjetoFinal.Debug.driver.xcl" 
 }
