@@ -1,112 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>5</fileVersion>
-    <fileChecksum>4250690455</fileChecksum>
+    <fileChecksum>1756587564</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\asm.s</file>
             <file>$PROJ_DIR$\src\startup_TM4C129E.s</file>
-            <file>$PROJ_DIR$\..\..\TM4C1294_SM_IAR9\Projects\uart2\src\init.s</file>
             <file>$PROJ_DIR$\src\asm.s</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C129ENC.icf</file>
-            <file>$PROJ_DIR$\Debug\Obj\init.o.rsp</file>
-            <file>$PROJ_DIR$\Debug\Obj\asm.o</file>
-            <file>$PROJ_DIR$\Debug\List\ProjetoFinal.map</file>
-            <file>$PROJ_DIR$\Debug\Exe\ProjetoFinal.out</file>
-            <file>$PROJ_DIR$\Debug\Obj\asm.o.rsp</file>
-            <file>$PROJ_DIR$\Debug\Obj\init.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\startup_TM4C129E.o.rsp</file>
-            <file>$PROJ_DIR$\Debug\Obj\startup_TM4C129E.o</file>
+            <file>$PROJ_DIR$\src\init.s</file>
         </outputs>
-        <file>
-            <name>$PROJ_DIR$\asm.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 6</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 9</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>[ROOT_NODE]</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 8 7</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\startup_TM4C129E.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 12</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 11</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\TM4C1294_SM_IAR9\Projects\uart2\src\init.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 10</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 5</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\asm.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 6</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 9</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Debug\Exe\ProjetoFinal.out</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 7</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 4 6 10 12</file>
-                </tool>
-            </inputs>
-        </file>
-        <forcedrebuild>
-            <name>[MULTI_TOOL]</name>
-            <tool>ILINK</tool>
-        </forcedrebuild>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
         </forcedrebuild>

@@ -2843,7 +2843,7 @@
         <name>$PROJ_DIR$\src\asm.s</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\..\TM4C1294_SM_IAR9\Projects\uart2\src\init.s</name>
+        <name>$PROJ_DIR$\src\init.s</name>
     </file>
     <file>
         <name>$PROJ_DIR$\src\startup_TM4C129E.s</name>
